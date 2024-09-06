@@ -11,8 +11,8 @@ import ..TensorKitManifolds: base, checkbase, inner, retract, transport, transpo
 struct UnitaryTangent{T<:AbstractTensorMap,TA<:AbstractTensorMap}
     W::T
     A::TA
-    function UnitaryTangent(W::AbstractTensorMap{S,N₁,N₂},
-                            A::AbstractTensorMap{S,N₂,N₂}) where {S,N₁,N₂}
+    function UnitaryTangent(W::AbstractTensorMap{E₁,S,N₁,N₂},
+                            A::AbstractTensorMap{E₂,S,N₂,N₂}) where {E₁,E₂,S,N₁,N₂}
         T = typeof(W)
         TA = typeof(A)
         return new{T,TA}(W, A)
