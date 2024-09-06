@@ -22,10 +22,10 @@ mutable struct GrassmannTangent{T<:AbstractTensorMap,
     U::Union{Nothing,TU}
     S::Union{Nothing,TS}
     V::Union{Nothing,TV}
-    function GrassmannTangent(W::AbstractTensorMap{S,N₁,N₂},
-                              Z::AbstractTensorMap{S,N₁,N₂}) where {S,N₁,N₂}
+    function GrassmannTangent(W::AbstractTensorMap{E₁,S,N₁,N₂},
+                              Z::AbstractTensorMap{E₂,S,N₁,N₂}) where {E₁,E₂,S,N₁,N₂}
         T = typeof(W)
-        TT = promote_type(float(scalartype(W)), scalartype(Z))
+        TT = promote_type(float(E₁), E₂)
         M = similarstoragetype(W, TT)
         Mr = similarstoragetype(W, real(TT))
         TU = tensormaptype(S, N₁, 1, M)
